@@ -51,5 +51,36 @@ namespace LinkedListProject
                 Console.WriteLine("{0} inserted into the linked list at head position", node.data);
             }
         }
+        internal void InsertAtParticularPosition(int position, int data)
+        {
+            int place = 1;
+            if (position < 1)
+                Console.WriteLine("Invalid position");
+            if (position == 1)
+            {
+                AddFirst(data);
+            }
+            else
+            {
+                Node temp = this.head;               
+                while (place <= position)
+                {
+                    place++;
+                    if (position == place)
+                    {
+                        Node add = new Node(data);
+                        add.next = temp.next;
+                        temp.next = add;
+                        break;
+                    }
+                    temp = temp.next;
+                    if (temp == null && place < position)
+                    {
+                        Console.WriteLine("Position Out of range");
+                        break;
+                    }
+                }               
+            }
+        }
     }
 }
