@@ -36,5 +36,20 @@ namespace LinkedListProject
                 temp = temp.next;
             }
         }
+        internal void AddFirst(int data)
+        {
+            if (this.head == null)
+            {
+                Console.WriteLine("No LinkedList is present to add data at front");
+            }
+            else
+            {
+                Node node = new Node(data);
+                Node temp = head;
+                node.next = temp;
+                head = node;
+                Console.WriteLine("{0} inserted into the linked list at head position", node.data);
+            }
+        }
     }
 }
