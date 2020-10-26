@@ -5,8 +5,8 @@ namespace LinkedListProject
 {
     public class LinkedList
     {
-        internal Node head;
-        internal void Add(int data)
+        public Node head;
+        public void Add(int data)
         {
             Node node = new Node(data);
             if (this.head == null)
@@ -22,7 +22,7 @@ namespace LinkedListProject
             }
             Console.WriteLine("{0} inserted into the linked list", node.data);
         }
-        internal void Display()
+        public void Display()
         {
             Node temp = this.head;
             if (temp == null)
@@ -36,7 +36,7 @@ namespace LinkedListProject
                 temp = temp.next;
             }
         }
-        internal void AddFirst(int data)
+        public void AddFirst(int data)
         {
             if (this.head == null)
             {
@@ -51,7 +51,7 @@ namespace LinkedListProject
                 Console.WriteLine("{0} inserted into the linked list at head position", node.data);
             }
         }
-        internal void InsertAtParticularPosition(int position, int data)
+        public void InsertAtParticularPosition(int position, int data)
         {
             int place = 1;
             if (position < 1)
@@ -82,14 +82,14 @@ namespace LinkedListProject
                 }               
             }
         }
-        internal Node Pop()
+        public Node Pop()
         {
             if (this.head == null)
                 return null;
             this.head = this.head.next;
             return this.head;
         }
-        internal Node PopLast()
+        public Node PopLast()
         {
             if (head == null)
                 return null;
@@ -102,6 +102,21 @@ namespace LinkedListProject
             }
             newNode.next = null;
             return head;
+        }
+        public bool Search(int num)
+        {
+            Node temp = head;
+            while (temp.data != null)
+            {
+                if (temp.data == num)
+                {
+                    Console.WriteLine("\n"+num + " is found");
+                    return true;
+                }
+                temp = temp.next;
+            }
+            Console.WriteLine(num + " cannot found");
+            return false;
         }
     }
 }

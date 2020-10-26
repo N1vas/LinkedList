@@ -11,6 +11,7 @@ namespace LinkedListProject
             list.InsertAtParticularPosition(2, 30);
             list.PopLast();
             list.Display();
+            list.Search(30);         
         }
     }
 }
