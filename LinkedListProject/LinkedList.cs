@@ -118,5 +118,24 @@ namespace LinkedListProject
             Console.WriteLine(num + " cannot found");
             return false;
         }
+        public void InsertAfterValue(int value, int data)
+        {
+            Node temp = head;
+            if (temp == null)
+            {
+                Console.WriteLine("Linked List is Empty");
+            }
+            while (temp.data != null)
+            {
+                if (temp.data == value)
+                {
+                    Node add = new Node(data);
+                    add.next = temp.next;
+                    temp.next = add;
+                    break;
+                }
+                temp = temp.next;
+            }
+        }
     }
 }
