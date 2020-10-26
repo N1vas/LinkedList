@@ -28,5 +28,18 @@ namespace LinkedListTest
             bool result = list.Search(40);
             Assert.AreEqual(expected, result);
         }
+        [TestMethod]
+        public void DeleteValueTest()
+        {
+            int expected = 3;
+            LinkedList list = new LinkedList();
+            list.Add(56);
+            list.Add(30);
+            list.Add(40);
+            list.Add(70);
+            list.DeleteValue(40);
+            int result = list.Size();
+            Assert.AreEqual(expected, result);
+        }
     }
 }

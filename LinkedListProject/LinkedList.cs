@@ -137,5 +137,43 @@ namespace LinkedListProject
                 temp = temp.next;
             }
         }
+        public void DeleteValue(int value)
+        {
+            Node temp = head;
+            if (temp == null)
+            {
+                Console.WriteLine("Linked List is Empty");
+            }
+            if (value == head.data)
+            {
+                head = head.next;
+            }
+            while (temp.data != null)
+            {
+                if (temp.next.data == value)
+                {
+                    temp.next = temp.next.next;
+                    break;
+                }               
+                temp = temp.next;
+            }
+        }
+        public int Size()
+        {
+            int value = 0;
+            Node temp = this.head;
+            if (temp == null)
+            {
+                Console.WriteLine("Linked List is Empty");
+                return value;
+            }
+            while (temp != null)
+            {
+                value++;
+                temp = temp.next;
+            }
+            Console.WriteLine("\nSize of LinkedList is "+value);
+            return value;
+        }
     }
 }
