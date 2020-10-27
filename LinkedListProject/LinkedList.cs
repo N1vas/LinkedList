@@ -5,15 +5,15 @@ namespace LinkedListProject
 {
     public class LinkedList
     {
-        public Node head;
+        public Node<int> head;
         public void Add(int data)
         {
-            Node node = new Node(data);
+            Node<int> node = new Node<int>(data);
             if (this.head == null)
                 this.head = node;
             else
             {
-                Node temp = head;
+                Node<int> temp = head;
                 while (temp.next != null)
                 {
                     temp = temp.next;
@@ -21,10 +21,11 @@ namespace LinkedListProject
                 temp.next = node;
             }
             Console.WriteLine("{0} inserted into the linked list", node.data);
+            SortedLinkedList();
         }
         public void Display()
         {
-            Node temp = this.head;
+            Node<int> temp = this.head;
             if (temp == null)
             {
                 Console.WriteLine("Linked list is empty");
@@ -44,8 +45,8 @@ namespace LinkedListProject
             }
             else
             {
-                Node node = new Node(data);
-                Node temp = head;
+                Node<int> node = new Node<int>(data);
+                Node<int> temp = head;
                 node.next = temp;
                 head = node;
                 Console.WriteLine("{0} inserted into the linked list at head position", node.data);
@@ -62,13 +63,13 @@ namespace LinkedListProject
             }
             else
             {
-                Node temp = this.head;               
+                Node<int> temp = this.head;               
                 while (place <= position)
                 {
                     place++;
                     if (position == place)
                     {
-                        Node add = new Node(data);
+                        Node<int> add = new Node<int>(data);
                         add.next = temp.next;
                         temp.next = add;
                         break;
@@ -82,20 +83,20 @@ namespace LinkedListProject
                 }               
             }
         }
-        public Node Pop()
+        public Node<int> Pop()
         {
             if (this.head == null)
                 return null;
             this.head = this.head.next;
             return this.head;
         }
-        public Node PopLast()
+        public Node<int> PopLast()
         {
             if (head == null)
                 return null;
             if (head.next == null)
                 return null;
-            Node newNode = head;
+            Node<int> newNode = head;
             while (newNode.next.next != null)
             {
                 newNode = newNode.next;
@@ -105,7 +106,7 @@ namespace LinkedListProject
         }
         public bool Search(int num)
         {
-            Node temp = head;
+            Node<int> temp = head;
             while (temp.data != null)
             {
                 if (temp.data == num)
@@ -120,7 +121,7 @@ namespace LinkedListProject
         }
         public void InsertAfterValue(int value, int data)
         {
-            Node temp = head;
+            Node<int> temp = head;
             if (temp == null)
             {
                 Console.WriteLine("Linked List is Empty");
@@ -129,7 +130,7 @@ namespace LinkedListProject
             {
                 if (temp.data == value)
                 {
-                    Node add = new Node(data);
+                    Node<int> add = new Node<int>(data);
                     add.next = temp.next;
                     temp.next = add;
                     break;
@@ -139,7 +140,7 @@ namespace LinkedListProject
         }
         public void DeleteValue(int value)
         {
-            Node temp = head;
+            Node<int> temp = head;
             if (temp == null)
             {
                 Console.WriteLine("Linked List is Empty");
@@ -161,7 +162,7 @@ namespace LinkedListProject
         public int Size()
         {
             int value = 0;
-            Node temp = this.head;
+            Node<int> temp = this.head;
             if (temp == null)
             {
                 Console.WriteLine("Linked List is Empty");
@@ -174,6 +175,27 @@ namespace LinkedListProject
             }
             Console.WriteLine("\nSize of LinkedList is "+value);
             return value;
+        }
+        public void SortedLinkedList()
+        {
+            Node<int> temp = head;
+            Node<int> check;
+            int val;
+            while (temp != null)
+            {
+                check = temp.next;
+                while (check != null)
+                {
+                    if (temp.data > check.data)
+                    {
+                        val = check.data;
+                        check.data = temp.data;
+                        temp.data = val;
+                    }
+                    check = check.next;
+                }
+                temp = temp.next;
+            }
         }
     }
 }

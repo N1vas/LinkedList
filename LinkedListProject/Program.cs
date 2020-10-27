@@ -10,7 +10,6 @@ namespace LinkedListProject
             list.Add(30);
             list.Add(40);
             list.Add(70);
-            list.DeleteValue(40);
             list.Display();
             list.Size();
         }
